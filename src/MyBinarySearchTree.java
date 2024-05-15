@@ -13,10 +13,13 @@ public class MyBinarySearchTree<K extends Comparable<K>,V>{
             this.val = val;
         }
     }
+
+    // Method to insert a key-value pair into the binary search tree
     public void put(K key, V val) {
         root = put(root, key, val);
     }
 
+    // Recursive helper method to insert a key-value pair into the binary search tree
     private Node put(Node node, K key, V val) {
         if (node == null)
             return new Node(key, val);
@@ -28,6 +31,7 @@ public class MyBinarySearchTree<K extends Comparable<K>,V>{
         return node;
     }
 
+    // Method to get the value associated with a given key from the binary search tree
     public V get(K key) {
         Node node = root;
         while (node != null) {
@@ -42,10 +46,12 @@ public class MyBinarySearchTree<K extends Comparable<K>,V>{
         return null;
     }
 
+    // Method to delete a key-value pair from the binary search tree
     public void delete(K key) {
         root = delete(root, key);
     }
 
+    // Recursive helper method to delete a key-value pair from the binary search tree
     private Node delete(Node node, K key) {
         if (node == null)
             return null;
@@ -69,12 +75,17 @@ public class MyBinarySearchTree<K extends Comparable<K>,V>{
         }
         return node;
     }
+
+    // Method to get an iterable for iterating through the keys of the binary search tree
     public Iterable<K> iterator() {
         ArrayList<K> keys = new ArrayList<>();
         inOrder(root, keys);
         return keys;
     }
 
+    // Helper method to perform in-order traversal
+    // of the binary search tree and populate the keys list
+    // traverse left subtree starting from root, and then right subtree.
     private void inOrder(Node node, ArrayList<K> nodes) {
         if (node == null)
             return;
@@ -83,6 +94,8 @@ public class MyBinarySearchTree<K extends Comparable<K>,V>{
         nodes.add(node.key);
         inOrder(node.right, nodes);
     }
+
+    // Helper method to find the smallest value in the binary search tree
     private K findSmallestValue(Node node) {
         return node.right == null ? node.key : findSmallestValue(node.right);
     }
