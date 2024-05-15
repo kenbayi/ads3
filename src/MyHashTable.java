@@ -117,4 +117,18 @@ public class MyHashTable<K, V> {
         return null;
     }
 
+    public void printHashTable() {
+        System.out.println("Elements in hash table buckets:");
+        for (int i = 0; i < M; i++) {
+            int count = 0;
+            HashNode<K, V> node = chainArray[i];
+            while (node != null) {
+                count++;
+                node = node.next;
+            }
+
+            System.out.println("Bucket " + (i + 1) + " has " + count + " elements.");
+        }
+    }
+
 }

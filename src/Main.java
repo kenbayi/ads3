@@ -15,5 +15,29 @@ public class Main {
         }
 
         table.printHashTable();
+
+        //BST testing
+        MyBinarySearchTree<Integer, String> bst = new MyBinarySearchTree<>();
+
+        // Adding elements to the binary search tree
+        bst.put(50, "Fifty");
+        bst.put(30, "Thirty");
+        bst.put(70, "Seventy");
+        bst.put(20, "Twenty");
+        bst.put(40, "Forty");
+        bst.put(60, "Sixty");
+        bst.put(80, "Eighty");
+
+        System.out.println("Value for key 40: " + bst.get(40));
+
+        bst.delete(40);
+        bst.delete(60);
+        System.out.println("Value for key 40 after deletion: " + bst.get(40));
+        System.out.println("Keys in ascending order:");
+
+        Iterable<Integer> iterator = bst.iterator();
+        for (Integer key : iterator) {
+            System.out.print(key + " ");
+        }
     }
 }
